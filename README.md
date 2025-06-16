@@ -5,11 +5,11 @@
 * llm 모델로는 대부분 구글의 gemini 모델을 사용하였다.
 * 공부는 진행 중이며, 계속해서 업데이트될 예정이다.
 
-## 학습 자료
+## 학습 기록
 * 프롬프트와 출력 파서: 프롬프트, 퓨샷 프롬프트, 다양한 출력 파서들
 * 모델: 캐시, 모델 직렬화, 비디오 질의응답 등
-* runnable: RunnablePassthrough, RunnableParallel, RunnableLambda
-* 메모리: 다양한 기준으로 메모리에 저장하기,데이터베이스에 저장하기
+* runnable: RunnablePassthrough, RunnableParallel, RunnableLambda 사용하기
+* 메모리: 다양한 기준으로 메모리에 저장하기, 데이터베이스에 저장하기
 
 ## 간단한 프로젝트
 ### 맥락 인식 챗봇
