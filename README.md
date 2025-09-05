@@ -42,38 +42,7 @@
 #### 개요
 * SLM을 로컬에 저장한 뒤 랭체인과 연결해 멀티턴 대화 구현
 * 모델: 허깅페이스의 'MLP-KTLim/llama-3-Korean-Bllossom-8B'
-* 역시 공부 목적이기 때문에 다양한 방법으로 시도해보았다.
-#### 준비
-* 프롬프트: 허깅페이스 모델 설명 페이지의 파이썬 파이프라인 코드 실행 후 사용된 프롬프트를 출력하여 문자열 그대로 템플릿으로 정의하였다.
-  <pre><code>template = '''
-  <|begin_of_text|><|start_header_id|>system<|end_header_id|>
-
-  You are a helpful AI assistant. Please answer the user's questions kindly. 당신은 유능한 AI 어시스턴트 입니다. 사용자의 질문에 대해 친절하게 답변해주세요.<|eot_id|><|start_header_id|>user<|end_header_id|>
-  {question}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-  ''' </code></pre>
-* 종료 토큰 확인
-  * 모델 설명 페이지 파이썬 파이프라인 코드 중 종료 토큰을 담은 terminators
-    <pre><code>terminators = [
-    pipe.tokenizer.eos_token_id,
-    pipe.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ]
-    </code></pre>
-  * terminators(=종료 토큰) 확인
-    <pre>[128009, 128009]</pre>
-  * 앞서 확인한 종료 토큰을 바탕으로 파이프라인 정의 후 랭체인의 HuggingFacePipeline과 연결
-    <pre><code>pipe = pipeline(
-        "text-generation", 
-        model=model,
-        tokenizer=tokenizer, 
-        max_new_tokens=512, 
-        eos_token_id=[128009, 128009] #종료 토큰 설정
-    )
-    hf = HuggingFacePipeline(pipeline=pipe)
-    </code></pre> 
-
-* ConversationChain 사용
-  * 템플릿이 그대로 저장됨
-#### SLM 멀티턴 대화
+* 역시 공부 목적이기 때문에 다양한 방현
 * 입력한 대화
   1. 안녕 내 이름은 '테디'야
   2. 파리 여행할 때 꼭 가야 할 곳 추천해줄래?
@@ -85,4 +54,5 @@
   * ConversationBufferMemory 이용
   * ConversationSummaryBufferMemory 이용
 * 메모리 사용x, 직접 요약
+
 * RAG 기반: 이전 대화 기록들 중 가장 유사한 대화 뽑아서 대화하기
